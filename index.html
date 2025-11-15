@@ -1,497 +1,743 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8" />
-  <title>Persaltum – VSL | Universidad Digital del Infoproducto</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>Método Persaltum – Guía PDF + VSL</title>
+  <meta name="description" content="Guía PDF + VSL del Método Persaltum: el paso a paso para crear y lanzar tu empresa de infoproductos con un sistema simple, práctico y automatizado.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <style>
-    * { box-sizing:border-box; margin:0; padding:0; }
-    body {
-      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      background:#050505;
-      color:#f5f5f5;
+    :root{
+      --bg:#050509;
+      --bg2:#0d0d13;
+      --card:#111118;
+      --border:rgba(255,255,255,.08);
+      --text:#f9fafb;
+      --muted:#9ca3af;
+      --gold:#f5c451;
+      --orange:#ff8a00;
+      --accent-grad:linear-gradient(135deg,#f5c451,#ff8a00);
+      --radius:18px;
+    }
+    *{box-sizing:border-box;margin:0;padding:0}
+    html,body{
+      background:radial-gradient(circle at top,#111827 0,#050509 45%,#020104 100%);
+      color:var(--text);
+      font-family:Inter,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+      -webkit-font-smoothing:antialiased;
+    }
+    body{padding-bottom:80px;}
+    a{text-decoration:none;color:inherit;}
+    .container{max-width:1120px;margin:0 auto;padding:22px 18px;}
+    .nav{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      padding:10px 0 6px;
+    }
+    .brand{
+      display:flex;
+      align-items:center;
+      gap:10px;
+      font-weight:800;
+      letter-spacing:.03em;
+      font-size:15px;
+    }
+    .brand-logo{
+      width:32px;height:32px;
+      border-radius:10px;
+      background:radial-gradient(circle at 30% 0%,#f5c451,#ff8a00 45%,#111827 100%);
+      display:grid;place-items:center;
+      font-size:18px;
+      box-shadow:0 0 0 1px rgba(0,0,0,.7),0 12px 30px rgba(0,0,0,.7);
+    }
+    .brand span{display:block;}
+    .brand small{font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:.12em;}
+    .nav-links{display:flex;gap:16px;font-size:13px;color:var(--muted);}
+    .nav-links a:hover{color:#e5e7eb;}
+    .badge{
+      display:inline-flex;
+      align-items:center;
+      gap:6px;
+      font-size:11px;
+      padding:4px 10px;
+      border-radius:999px;
+      border:1px solid rgba(245,196,81,.35);
+      background:rgba(245,196,81,.08);
+      color:#fef3c7;
+      text-transform:uppercase;
+      letter-spacing:.16em;
+      font-weight:700;
+    }
+
+    /* HERO */
+    .hero{
+      display:grid;
+      grid-template-columns:minmax(0,1.1fr) minmax(0,.9fr);
+      gap:26px;
+      align-items:center;
+      padding:26px 0 30px;
+    }
+    .hero-title{
+      font-size:clamp(28px,4.4vw,40px);
+      line-height:1.05;
+      margin:12px 0;
+      font-weight:800;
+      letter-spacing:-.02em;
+    }
+    .hero-title span{
+      background:var(--accent-grad);
+      -webkit-background-clip:text;
+      -webkit-text-fill-color:transparent;
+    }
+    .hero-sub{
+      color:var(--muted);
+      font-size:15px;
+      line-height:1.6;
+      max-width:470px;
+    }
+    .hero-list{
+      margin-top:14px;
+      list-style:none;
+      color:#e5e7eb;
+      font-size:14px;
+    }
+    .hero-list li{
+      display:flex;
+      align-items:flex-start;
+      gap:8px;
+      margin-bottom:6px;
+    }
+    .hero-list b{color:#fef9c3;font-weight:600;}
+    .hero-list span:first-child{
+      font-size:16px;line-height:1;margin-top:2px;
+    }
+    .cta-row{
+      display:flex;
+      flex-wrap:wrap;
+      gap:10px;
+      margin:18px 0 8px;
+    }
+    .btn{
+      border-radius:999px;
+      padding:12px 18px;
+      font-size:14px;
+      font-weight:700;
+      border:0;
+      cursor:pointer;
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      transition:transform .12s ease,box-shadow .12s ease,background .12s ease;
+      white-space:nowrap;
+    }
+    .btn-primary{
+      background:var(--accent-grad);
+      color:#111827;
+      box-shadow:0 10px 30px rgba(0,0,0,.45);
+    }
+    .btn-primary:hover{transform:translateY(-1px);box-shadow:0 14px 38px rgba(0,0,0,.6);}
+    .btn-outline{
+      background:transparent;
+      border:1px solid var(--border);
+      color:var(--muted);
+    }
+    .btn-outline:hover{border-color:#e5e7eb;color:#e5e7eb;}
+    .small-note{
+      font-size:12px;
+      color:var(--muted);
+      margin-top:4px;
+    }
+
+    .hero-video{
+      background:radial-gradient(circle at top,#1f2937,#020617 60%);
+      border-radius:var(--radius);
+      border:1px solid rgba(148,163,184,.35);
+      padding:14px;
+      box-shadow:0 16px 45px rgba(0,0,0,.8);
+      position:relative;
+    }
+    .hero-video-inner{
+      border-radius:14px;
+      background:#020617;
+      border:1px solid rgba(15,23,42,.7);
+      overflow:hidden;
+      aspect-ratio:16/9;
+      position:relative;
+      display:grid;
+      place-items:center;
+      color:#9ca3af;
+      font-size:13px;
+      text-align:center;
+      padding:14px;
+    }
+    .hero-video-inner::before{
+      content:"▶";
+      font-size:34px;
+      width:58px;height:58px;
+      border-radius:999px;
+      background:rgba(15,23,42,.8);
+      border:1px solid rgba(248,250,252,.25);
+      display:grid;place-items:center;
+      position:absolute;
+      inset:0;
+      margin:auto;
+      color:#f9fafb;
+      box-shadow:0 12px 30px rgba(0,0,0,.7);
+    }
+    .hero-video-tag{
+      position:absolute;
+      bottom:10px;left:16px;
+      background:rgba(15,23,42,.8);
+      padding:6px 9px;
+      border-radius:999px;
+      border:1px solid rgba(148,163,184,.5);
+      font-size:11px;
+      color:#e5e7eb;
+      display:flex;
+      align-items:center;
+      gap:6px;
+    }
+
+    /* SECTIONS */
+    .section{
+      padding:30px 0 8px;
+      border-top:1px solid rgba(31,41,55,.8);
+      border-image:linear-gradient(90deg,transparent,#4b5563,transparent) 1;
+    }
+    .section-header{
+      margin-bottom:18px;
+    }
+    .eyebrow{
+      font-size:11px;
+      text-transform:uppercase;
+      color:var(--muted);
+      letter-spacing:.18em;
+      margin-bottom:4px;
+    }
+    .section-title{
+      font-size:22px;
+      font-weight:700;
+      letter-spacing:-.01em;
+      margin-bottom:4px;
+    }
+    .section-sub{
+      font-size:14px;
+      color:var(--muted);
+      max-width:540px;
+    }
+    .grid-2{
+      display:grid;
+      grid-template-columns:repeat(2,minmax(0,1fr));
+      gap:18px;
+    }
+    .grid-3{
+      display:grid;
+      grid-template-columns:repeat(3,minmax(0,1fr));
+      gap:18px;
+    }
+    .card{
+      background:radial-gradient(circle at top left,rgba(245,196,81,.06),transparent 55%);
+      border-radius:var(--radius);
+      border:1px solid var(--border);
+      padding:16px 16px 15px;
+    }
+    .card h3{
+      font-size:15px;
+      margin-bottom:6px;
+    }
+    .card p{
+      font-size:13px;
+      color:var(--muted);
+      margin-bottom:8px;
       line-height:1.6;
     }
-    a { color:inherit; text-decoration:none; }
-    .container { max-width:1100px; margin:0 auto; padding:1.5rem; }
-    header {
-      padding:1.2rem 0;
+    .card ul{
+      list-style:none;
+      padding-left:0;
+      font-size:13px;
+      color:#e5e7eb;
+    }
+    .card ul li{
       display:flex;
-      justify-content:space-between;
-      align-items:center;
+      gap:8px;
+      margin-bottom:5px;
     }
-    .logo {
-      font-weight:700;
-      letter-spacing:0.08em;
-      text-transform:uppercase;
-      font-size:0.9rem;
-    }
-    .logo span { color:#f5c853; }
-    nav a { margin-left:1.5rem; font-size:0.9rem; opacity:0.9; }
-    nav a:hover { opacity:1; }
+    .card ul li span:first-child{font-size:14px;margin-top:1px;}
 
-    section { padding:2.8rem 0; border-top:1px solid #141414; }
-
-    .hero {
-      display:flex;
-      flex-wrap:wrap;
-      gap:2rem;
-      align-items:center;
-    }
-    .hero-left, .hero-right { flex:1 1 320px; }
-
-    .tag {
-      text-transform:uppercase;
-      font-size:0.75rem;
-      letter-spacing:0.16em;
-      color:#f5c853;
-      margin-bottom:0.5rem;
-    }
-    h1 {
-      font-size:2.2rem;
-      margin-bottom:1rem;
-    }
-    h2 {
-      font-size:1.7rem;
-      margin-bottom:1rem;
-    }
-    h3 {
-      font-size:1.1rem;
-      margin-bottom:0.5rem;
-    }
-    p { font-size:0.98rem; opacity:0.95; }
-
-    .hero-sub { margin-bottom:1rem; }
-    .hero-highlight { font-weight:600; color:#f5c853; }
-
-    .video-wrapper {
-      position:relative;
-      width:100%;
-      padding-top:56.25%; /* 16:9 */
-      border-radius:1rem;
-      overflow:hidden;
-      border:1px solid #242424;
-      background:#000;
-    }
-    .video-wrapper iframe {
-      position:absolute;
-      top:0; left:0;
-      width:100%;
-      height:100%;
-      border:0;
-    }
-
-    .btn {
-      display:inline-block;
-      padding:0.9rem 1.5rem;
-      border-radius:999px;
-      font-size:0.95rem;
-      font-weight:600;
-      border:none;
-      cursor:pointer;
-      text-align:center;
-      transition:transform 0.08s ease, box-shadow 0.08s ease, background 0.12s ease, color 0.12s ease;
-    }
-    .btn-gold {
-      background:#f5c853;
-      color:#050505;
-      box-shadow:0 0 18px rgba(245,200,83,0.4);
-    }
-    .btn-gold:hover {
-      transform:translateY(-1px);
-      box-shadow:0 0 24px rgba(245,200,83,0.6);
-    }
-    .btn-outline {
-      border:1px solid #f5c853;
-      color:#f5c853;
-      background:transparent;
-    }
-    .btn-outline:hover {
-      background:#f5c853;
-      color:#050505;
-      transform:translateY(-1px);
-    }
-    .btn-block { width:100%; display:block; }
-
-    .hero-cta {
-      display:flex;
-      flex-wrap:wrap;
-      gap:0.8rem;
-      margin:1rem 0 0.3rem;
-    }
-
-    .note-sm {
-      font-size:0.85rem;
-      opacity:0.8;
-      margin-top:0.5rem;
-    }
-    .note-sm a { text-decoration:underline; }
-
-    .grid-2 {
+    /* PARA QUIÉN ES */
+    .pill-list{
       display:grid;
-      grid-template-columns:repeat(auto-fit, minmax(260px,1fr));
-      gap:1.8rem;
+      gap:6px;
+      font-size:13px;
+      color:#e5e7eb;
+      list-style:none;
+    }
+    .pill-list li{
+      display:flex;
+      gap:6px;
       align-items:flex-start;
     }
+    .pill-list b{color:#bbf7d0;font-weight:600;}
+    .pill-bad b{color:#fed7d7;}
 
-    .card {
-      background:#0b0b0b;
-      border-radius:1rem;
-      padding:1.5rem;
-      border:1px solid #171717;
+    /* FAQ */
+    .faq-grid{
+      display:grid;
+      grid-template-columns:repeat(2,minmax(0,1fr));
+      gap:14px;
     }
-
-    ul { margin-left:1.1rem; margin-top:0.4rem; }
-    li { margin-bottom:0.4rem; font-size:0.95rem; }
-
-    .badge {
-      display:inline-block;
-      font-size:0.75rem;
-      text-transform:uppercase;
-      letter-spacing:0.13em;
-      color:#f5c853;
-      margin-bottom:0.5rem;
+    details{
+      background:rgba(15,23,42,.9);
+      border-radius:14px;
+      border:1px solid var(--border);
+      padding:10px 12px;
+      font-size:13px;
     }
-
-    .highlight { color:#f5c853; font-weight:600; }
-
-    .pill-row {
-      display:flex;
-      flex-wrap:wrap;
-      gap:0.6rem;
-      margin-top:0.4rem;
-    }
-    .pill {
-      border-radius:999px;
-      border:1px solid #2b2b2b;
-      padding:0.25rem 0.7rem;
-      font-size:0.78rem;
-      opacity:0.9;
-    }
-
-    details {
-      background:#0b0b0b;
-      border-radius:0.9rem;
-      border:1px solid #181818;
-      padding:0.85rem 1rem;
-      margin-bottom:0.7rem;
-    }
-    summary {
+    details summary{
       cursor:pointer;
-      font-size:0.95rem;
-      font-weight:500;
+      font-weight:600;
+      list-style:none;
+      outline:none;
     }
-    details p { margin-top:0.4rem; font-size:0.9rem; opacity:0.9; }
+    details[open]{border-color:rgba(245,196,81,.6);}
+    details summary::-webkit-details-marker{display:none;}
+    details p{margin-top:6px;color:var(--muted);}
 
-    .price {
-      font-size:1.6rem;
-      font-weight:700;
-      color:#f5c853;
-      margin:0.4rem 0;
+    /* TESTIMONIOS SIMPLE */
+    .testi{
+      display:grid;
+      grid-template-columns:repeat(3,minmax(0,1fr));
+      gap:14px;
     }
-    .strike {
-      text-decoration:line-through;
-      opacity:0.5;
-      font-size:0.9rem;
+    .quote{
+      background:rgba(15,23,42,.9);
+      border-radius:14px;
+      border:1px solid var(--border);
+      padding:12px 13px;
+      font-size:12.5px;
+      color:#e5e7eb;
+    }
+    .quote-name{
+      margin-top:8px;
+      font-size:12px;
+      color:#f5c451;
+      font-weight:600;
+    }
+    .quote-tag{
+      font-size:11px;
+      color:var(--muted);
     }
 
-    .cta-final {
+    /* CTA FINAL */
+    .cta-final{
+      margin:26px 0 18px;
       text-align:center;
-      max-width:720px;
-      margin:0 auto;
+      padding:18px 18px 20px;
+      border-radius:var(--radius);
+      border:1px solid rgba(248,250,252,.16);
+      background:radial-gradient(circle at top,#1f2937,#020617 55%);
+      box-shadow:0 18px 55px rgba(0,0,0,.85);
     }
-    .cta-buttons {
+    .cta-final h2{
+      font-size:22px;
+      margin-bottom:6px;
+    }
+    .cta-final p{
+      font-size:13px;
+      color:var(--muted);
+      margin-bottom:14px;
+    }
+    .cta-final-buttons{
       display:flex;
       flex-wrap:wrap;
-      gap:0.7rem;
       justify-content:center;
-      margin-top:1.1rem;
+      gap:10px;
+      margin-bottom:6px;
     }
 
-    footer {
-      padding:2rem 0 1.2rem;
-      border-top:1px solid #141414;
+    footer{
+      padding:10px 0 18px;
+      font-size:11px;
+      color:#6b7280;
+      border-top:1px solid rgba(31,41,55,.8);
       text-align:center;
-      font-size:0.8rem;
-      opacity:0.7;
     }
 
-    @media (max-width: 720px) {
-      nav { display:none; }
-      h1 { font-size:1.85rem; }
-      .container { padding:1.2rem; }
+    /* MOBILE CTA STICKY */
+    .mobile-cta{
+      position:fixed;
+      left:0;right:0;bottom:0;
+      background:rgba(3,7,18,.98);
+      border-top:1px solid rgba(148,163,184,.4);
+      padding:10px 14px;
+      display:flex;
+      gap:8px;
+      z-index:40;
+    }
+    .mobile-cta .btn{flex:1;justify-content:center;}
+
+    /* RESPONSIVE */
+    @media (max-width:960px){
+      .hero{grid-template-columns:1fr;gap:18px;}
+      .hero-video{order:-1;}
+      .hero-sub{max-width:100%;}
+      .nav-links{display:none;}
+    }
+    @media (max-width:768px){
+      .grid-2{grid-template-columns:1fr;}
+      .grid-3{grid-template-columns:1fr;}
+      .faq-grid{grid-template-columns:1fr;}
+      .testi{grid-template-columns:1fr;}
+      .container{padding-inline:16px;}
     }
   </style>
 </head>
 <body>
 
-  <!-- HEADER -->
-  <header class="container">
-    <div class="logo">PERSALTUM <span>UNIVERSIDAD DIGITAL</span></div>
-    <nav>
-      <a href="#vsl">Video</a>
+  <header class="container nav">
+    <div class="brand">
+      <div class="brand-logo">P</div>
+      <div>
+        <span>Persaltum</span>
+        <small>Universidad Digital del Infoproducto</small>
+      </div>
+    </div>
+    <nav class="nav-links">
       <a href="#metodo">Método</a>
-      <a href="#incluye">Qué incluye</a>
-      <a href="#precio">Inversión</a>
+      <a href="#contenido">Contenido</a>
+      <a href="#para-quien">¿Es para mí?</a>
       <a href="#faq">FAQ</a>
     </nav>
   </header>
 
-  <main>
-    <!-- HERO / VSL -->
-    <section class="container hero" id="vsl">
-      <div class="hero-left">
-        <div class="tag">VSL · MÉTODO PERSALTUM</div>
-        <h1>Si te dijera que no podés fracasar, ¿cuán grande sería tu sueño?</h1>
+  <main class="container">
+    <!-- HERO -->
+    <section class="hero">
+      <div>
+        <span class="badge">Nuevo · Guía PDF + VSL</span>
+        <h1 class="hero-title">
+          Método <span>Persaltum</span>: el mapa claro para crear tu empresa de infoproductos
+        </h1>
         <p class="hero-sub">
-          Después de años trabajando bajo estructura y de enseñar a cientos de personas a construir sus propios negocios digitales,
-          entendí algo fundamental: <span class="hero-highlight">la gente no fracasa por falta de talento, fracasa por falta de sistema.</span>
-        </p>
-        <p>
-          En este video te explico, paso a paso, el Método Persaltum: cómo ordenar tu mente, tu mensaje y tu ecosistema digital para
-          dejar de improvisar en redes y empezar a construir un negocio real alrededor de tu conocimiento.
+          Después de años trabajando bajo estructura y de enseñar a cientos de personas a construir sus propios negocios digitales, entendí algo fundamental:
+          la gente no fracasa por falta de talento, <strong>fracasa por falta de sistema</strong>.  
+          Esta guía es ese sistema, explicado paso a paso.
         </p>
 
-        <div class="hero-cta">
-          <a href="#precio" class="btn btn-gold">Quiero acceder al método completo</a>
-          <a href="#metodo" class="btn btn-outline">Ver cómo funciona Persaltum</a>
+        <ul class="hero-list">
+          <li><span>✔</span><span><b>Guía PDF + VSL</b> con el paso a paso completo, sin humo ni palabras raras.</span></li>
+          <li><span>✔</span><span><b>Ruta 30–60 días</b> para pasar de idea a producto vendible.</span></li>
+          <li><span>✔</span><span><b>Checklists y ejemplos reales</b> para que no te pierdas en la implementación.</span></li>
+        </ul>
+
+        <div class="cta-row">
+          <!-- REEMPLAZAR STRIPE_LINK_PDF -->
+          <a href="STRIPE_LINK_PDF" class="btn btn-primary" target="_blank" rel="noopener">
+            Comprar ahora (Stripe)
+          </a>
+          <!-- REEMPLAZAR HOTMART_LINK_PDF -->
+          <a href="HOTMART_LINK_PDF" class="btn btn-outline" target="_blank" rel="noopener">
+            Comprar en Hotmart
+          </a>
+          <!-- REEMPLAZAR WHATSAPP_LINK -->
+          <a href="WHATSAPP_LINK" class="btn btn-outline" target="_blank" rel="noopener">
+            Hablar por WhatsApp
+          </a>
         </div>
+        <div class="small-note">
+          🔒 Pago seguro · Acceso inmediato · PDF descargable + enlace a la VCL/VSL de explicación.
+        </div>
+        <div class="small-note">
+          ✅ Ideal si querés crear, ordenar o relanzar tu empresa de infoproductos con un método claro.
+        </div>
+      </div>
 
-        <p class="note-sm">
-          ¿Preferís hablar conmigo antes? 
-          <a href="https://wa.me/5491139322197" target="_blank">Escribime por WhatsApp</a>.
+      <!-- VIDEO / VSL -->
+      <aside class="hero-video" aria-label="Contenedor de tu VSL">
+        <div class="hero-video-inner">
+          <p>Acá insertás tu video VSL (YouTube, Vimeo o video propio).</p>
+          <p style="margin-top:4px;opacity:.8;">Solo reemplazá este bloque por tu &lt;iframe&gt; o reproductor.</p>
+        </div>
+        <div class="hero-video-tag">
+          <span>🎥</span> <span>Video clase larga (VCL/VSL) del Método Persaltum</span>
+        </div>
+      </aside>
+    </section>
+
+    <!-- EL MÉTODO -->
+    <section id="metodo" class="section">
+      <div class="section-header">
+        <p class="eyebrow">El sistema</p>
+        <h2 class="section-title">¿Qué es exactamente el Método Persaltum?</h2>
+        <p class="section-sub">
+          Es un marco práctico que ordena todo el caos del mundo digital en 3 pilares:
+          <strong>producto real, sistema de ventas y escala</strong>.
+          La guía está pensada para que la puedas seguir como si fuera un GPS.
         </p>
       </div>
 
-      <div class="hero-right">
-        <div class="video-wrapper">
-          <!-- 🔁 REEMPLAZAR VIDEO_URL POR TU LINK (YouTube, Loom, Vimeo, etc.) -->
-          <iframe src="VIDEO_URL"
-                  title="Persaltum VSL"
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                  allowfullscreen>
-          </iframe>
-        </div>
-        <p class="note-sm">
-          Te recomiendo ver el video completo con calma.  
-          Es la base de todo lo que vamos a construir juntos.
-        </p>
+      <div class="grid-3">
+        <article class="card">
+          <h3>1. Producto real</h3>
+          <p>Definís qué vendés, para quién y por qué tu solución vale la pena. Sin esto, cualquier anuncio es tirar plata.</p>
+          <ul>
+            <li><span>✔</span><span>Cliente ideal claro y problema concreto.</span></li>
+            <li><span>✔</span><span>Estructura de tu infoproducto (módulos, clases, bonos).</span></li>
+            <li><span>✔</span><span>Oferta persuasiva: precio, garantía, promesa.</span></li>
+          </ul>
+        </article>
+
+        <article class="card">
+          <h3>2. Sistema de ventas</h3>
+          <p>Armás el embudo mínimo viable para vender en automático, aunque hoy no tengas nada montado.</p>
+          <ul>
+            <li><span>✔</span><span>Landing base con estructura probada.</span></li>
+            <li><span>✔</span><span>VSL/VCL: guion, enfoque y puntos clave.</span></li>
+            <li><span>✔</span><span>Conexión con Stripe/Hotmart + WhatsApp/email.</span></li>
+          </ul>
+        </article>
+
+        <article class="card">
+          <h3>3. Escala simple</h3>
+          <p>Te muestro cómo pasar de “vendo cuando tengo tiempo” a “sistema que corre todos los días” sin volverte esclavo.</p>
+          <ul>
+            <li><span>✔</span><span>Rutina de contenidos que atraen clientes.</span></li>
+            <li><span>✔</span><span>Métricas básicas para decidir con calma.</span></li>
+            <li><span>✔</span><span>Caminos para subir a salas Pro / Premium.</span></li>
+          </ul>
+        </article>
       </div>
     </section>
 
-    <!-- MÉTODO PERSALTUM -->
-    <section id="metodo">
-      <div class="container grid-2">
-        <div>
-          <span class="badge">El método</span>
-          <h2>No es motivación. Es un sistema.</h2>
-          <p>
-            El Método Persaltum es una estructura clara para que conviertas tu experiencia en un negocio digital real,
-            aunque hoy sientas que estás perdido entre reels, mensajes y herramientas sueltas.
-          </p>
-          <p style="margin-top:0.6rem;">
-            No vas a recibir “tips” sueltos. Vas a entender <span class="highlight">el sistema completo</span>:
-            desde cómo pensarte como empresa digital hasta cómo conectar contenidos, formularios, correos, WhatsApp y cobros.
-          </p>
-        </div>
+    <!-- CONTENIDO DETALLADO -->
+    <section id="contenido" class="section">
+      <div class="section-header">
+        <p class="eyebrow">Dentro del PDF + VSL</p>
+        <h2 class="section-title">Qué encontrás adentro, punto por punto</h2>
+        <p class="section-sub">
+          La guía está escrita para que puedas seguirla en orden, de principio a fin, sin interpretaciones raras.
+          Cada capítulo termina con acciones concretas.
+        </p>
+      </div>
 
-        <div class="card">
-          <h3>Las 5 etapas del Método Persaltum</h3>
+      <div class="grid-2">
+        <article class="card">
+          <h3>Módulo 1 – Fundamentos Persaltum</h3>
+          <p>Te ubico en el mapa: qué es un infoproducto, qué no es, y cómo encaja en tu vida y realidad actual.</p>
           <ul>
-            <li><span class="highlight">Etapa 1 – Mentalidad:</span> dejar de pensar como “influencer suelto” y empezar a pensarte como empresa.</li>
-            <li><span class="highlight">Etapa 2 – Mensaje:</span> ordenar tu historia, tu promesa y tu posicionamiento para que la gente entienda qué hacés y por qué.</li>
-            <li><span class="highlight">Etapa 3 – Ecosistema digital:</span> mapa de todas las piezas (contenido, formularios, base de datos, automatizaciones, cobros).</li>
-            <li><span class="highlight">Etapa 4 – Sistema de ventas:</span> cómo se conecta todo para que tu negocio siga funcionando incluso cuando no estás en el chat.</li>
-            <li><span class="highlight">Etapa 5 – Escalamiento:</span> métricas, mejora continua y pasos para pensar en grande sin perder el control.</li>
+            <li><span>✔</span><span>Por qué este es el mejor momento histórico para vender conocimiento.</span></li>
+            <li><span>✔</span><span>Tipos de infoproductos y cuál te conviene según tu punto de partida.</span></li>
+            <li><span>✔</span><span>Errores típicos que frenan a la mayoría antes de empezar.</span></li>
           </ul>
-        </div>
+        </article>
+
+        <article class="card">
+          <h3>Módulo 2 – Tu oferta y tu promesa</h3>
+          <p>Acá bajamos a tierra el “qué vendo exactamente” con una propuesta que tenga sentido para vos y para el cliente.</p>
+          <ul>
+            <li><span>✔</span><span>Cómo redactar una promesa potente sin vender humo.</span></li>
+            <li><span>✔</span><span>Definir precio, forma de pago y garantías.</span></li>
+            <li><span>✔</span><span>Plantilla de oferta lista para completar.</span></li>
+          </ul>
+        </article>
+
+        <article class="card">
+          <h3>Módulo 3 – Arquitectura del embudo</h3>
+          <p>Te explico con esquemas simples cómo se ve tu sistema desde que la persona te descubre hasta que compra.</p>
+          <ul>
+            <li><span>✔</span><span>Mapa visual del funnel Persaltum.</span></li>
+            <li><span>✔</span><span>Qué páginas y piezas sí o sí necesitás.</span></li>
+            <li><span>✔</span><span>Ejemplos concretos aplicados a distintos nichos.</span></li>
+          </ul>
+        </article>
+
+        <article class="card">
+          <h3>Módulo 4 – VSL / VCL que convierte</h3>
+          <p>Aprovechás la VCL/VSL como tu “vendedor 24/7”. No necesitás ser actor, necesitás un guion correcto.</p>
+          <ul>
+            <li><span>✔</span><span>Estructura del guion en bloques (inicio, historia, prueba, cierre).</span></li>
+            <li><span>✔</span><span>Cómo grabarla aunque solo tengas tu celular.</span></li>
+            <li><span>✔</span><span>Checklist previo a publicar para no perder conversiones.</span></li>
+          </ul>
+        </article>
+
+        <article class="card">
+          <h3>Módulo 5 – Tráfico y primeras ventas</h3>
+          <p>Pasamos a la acción: qué hacer la primera semana, la segunda y la tercera para generar movimiento real.</p>
+          <ul>
+            <li><span>✔</span><span>Rutina de contenidos cortos (Reels, TikTok, Shorts).</span></li>
+            <li><span>✔</span><span>Cómo usar WhatsApp de forma profesional sin vivir contestando.</span></li>
+            <li><span>✔</span><span>Idea de anuncio simple para validar rápido.</span></li>
+          </ul>
+        </article>
+
+        <article class="card">
+          <h3>Módulo 6 – Ruta 30–60 días</h3>
+          <p>Cierro con un plan concreto: qué hacer cada semana para no perder foco hasta tener tus primeras ventas reales.</p>
+          <ul>
+            <li><span>✔</span><span>Checklist semanal (acción, revisión, ajuste).</span></li>
+            <li><span>✔</span><span>Qué medir aunque “no te gusten los números”.</span></li>
+            <li><span>✔</span><span>Cómo saber si estás listo para dar el siguiente salto (salas Pro / Premium).</span></li>
+          </ul>
+        </article>
       </div>
     </section>
 
     <!-- PARA QUIÉN ES -->
-    <section id="para-quien">
-      <div class="container grid-2">
-        <div>
-          <span class="badge">Perfil</span>
-          <h2>¿Para quién es este VSL + Método?</h2>
-          <p>Está pensado especialmente para:</p>
-          <ul>
-            <li>Profesionales, coaches, terapeutas, docentes y expertos que quieren vivir de su conocimiento.</li>
-            <li>Creadores de contenido que ya tienen audiencia pero no tienen sistema de ventas sólido.</li>
-            <li>Personas que quieren crear su primer infoproducto y no saben por dónde empezar.</li>
-            <li>Emprendedores que se cansaron de “intentar todo” sin resultados sostenibles.</li>
-          </ul>
-        </div>
+    <section id="para-quien" class="section">
+      <div class="section-header">
+        <p class="eyebrow">¿Es para vos?</p>
+        <h2 class="section-title">Para quién es y para quién no es esta guía</h2>
+      </div>
 
-        <div class="card">
+      <div class="grid-2">
+        <article class="card">
+          <h3>Esta guía es para vos si…</h3>
+          <ul class="pill-list">
+            <li><span>✔</span><span><b>Tenés conocimiento real</b> (profesión, oficio, experiencia) y querés convertirlo en producto digital.</span></li>
+            <li><span>✔</span><span>Ya intentaste “subir contenido” pero sentís que te falta un sistema.</span></li>
+            <li><span>✔</span><span>Buscás algo <b>claro, directo y aplicado</b>, no teoría interminable.</span></li>
+            <li><span>✔</span><span>Estás dispuesto a ejecutar paso a paso durante al menos 30–60 días.</span></li>
+          </ul>
+        </article>
+
+        <article class="card">
           <h3>No es para vos si…</h3>
-          <ul>
-            <li>Buscás fórmulas mágicas sin trabajo.</li>
-            <li>Solo querés likes y viralidad pero no te interesa construir un negocio.</li>
-            <li>No estás dispuesto a sentarte, pensar y tomar decisiones sobre tu proyecto.</li>
+          <ul class="pill-list pill-bad">
+            <li><span>✖</span><span>Buscás “hacerse rico de la noche a la mañana” sin trabajo ni responsabilidad.</span></li>
+            <li><span>✖</span><span>No estás dispuesto a mostrarte, comunicar y ajustar en base a resultados.</span></li>
+            <li><span>✖</span><span>Querés que alguien haga todo por vos sin involucrarte en el proceso.</span></li>
           </ul>
-          <p style="margin-top:0.6rem; font-size:0.9rem; opacity:0.9;">
-            Si llegaste hasta el final del VSL y algo te hace ruido adentro, probablemente sí sea para vos.
-          </p>
-        </div>
+        </article>
       </div>
     </section>
 
-    <!-- QUÉ INCLUYE LA OFERTA -->
-    <section id="incluye">
-      <div class="container grid-2">
-        <div>
-          <span class="badge">Qué incluye</span>
-          <h2>¿Qué obtenés cuando decidís entrar?</h2>
-          <ul>
-            <li>Acceso al <span class="highlight">VSL completo de Persaltum</span> para repasar las ideas clave cuantas veces quieras.</li>
-            <li>La <span class="highlight">guía Método Persaltum en PDF</span> para seguir el paso a paso por escrito.</li>
-            <li>El mapa visual del <span class="highlight">ecosistema digital</span>: desde contenido hasta cobro.</li>
-            <li>Ejemplos de mensajes, estructuras de oferta y recorridos del cliente.</li>
-            <li>Orientación sobre herramientas (ejemplos: Google Forms, Sheets, MailerLite, WhatsApp, Stripe, MercadoPago, Hotmart).</li>
-            <li>Actualizaciones futuras del material base del método.</li>
-          </ul>
-        </div>
-
-        <div class="card">
-          <h3>Bonus de lanzamiento (opcional)</h3>
-          <ul>
-            <li>Plantilla de preguntas para tu formulario de aplicación o filtrado de leads.</li>
-            <li>Checklist de implementación del sistema (para que sepas qué ya hiciste y qué te falta).</li>
-            <li>Guion base para tu propio VSL o video de presentación.</li>
-          </ul>
-          <div class="pill-row">
-            <div class="pill">Acceso inmediato</div>
-            <div class="pill">Actualizable</div>
-            <div class="pill">En español neutro</div>
-          </div>
-        </div>
+    <!-- TESTIMONIOS / PRUEBA SOCIAL SIMPLE -->
+    <section class="section">
+      <div class="section-header">
+        <p class="eyebrow">Resultados</p>
+        <h2 class="section-title">Lo que pasa cuando hay sistema</h2>
       </div>
-    </section>
 
-    <!-- PRECIO E INVERSIÓN -->
-    <section id="precio">
-      <div class="container grid-2">
-        <div>
-          <span class="badge">Inversión</span>
-          <h2>Un solo sí que cambia cómo pensás tu negocio digital.</h2>
-          <p>
-            Podés seguir viendo videos sueltos en redes, o podés sentarte de una vez a entender un método completo,
-            probado en personas reales, pensado para que puedas implementarlo aunque no seas técnico.
-          </p>
-          <p style="margin-top:0.6rem;">
-            Este no es un gasto más. Es una decisión: <span class="highlight">dejar de improvisar</span> y empezar a pensar en sistema.
-          </p>
-        </div>
+      <div class="testi">
+        <article class="quote">
+          “Venía hace años queriendo lanzar mi curso de idiomas. Con el enfoque del método armé oferta, landing y VSL en 3 semanas. Hoy tengo un sistema que puedo escalar.”
+          <div class="quote-name">Carlos – Idiomas online</div>
+          <div class="quote-tag">De “tengo una idea” a vender todas las semanas</div>
+        </article>
 
-        <div class="card">
-          <h3>Acceso al VSL + Método Persaltum</h3>
-          <p class="strike">USD 197</p>
-          <!-- 🔁 DEFINÍ TU PRECIO REAL DE LANZAMIENTO -->
-          <p class="price">USD 97</p>
-          <p style="font-size:0.9rem; opacity:0.9; margin-bottom:0.9rem;">
-            Pago único. Acceso inmediato al VSL, a la guía PDF y a las actualizaciones de esta versión del método.
-          </p>
+        <article class="quote">
+          “Tenía seguidores pero nada ordenado. El PDF me ayudó a ver las piezas: producto, embudo y mensajes. Dejé de sentir que estaba improvisando todos los días.”
+          <div class="quote-name">Lucía – Entrenadora fitness</div>
+          <div class="quote-tag">De contenido suelto a negocio con dirección</div>
+        </article>
 
-          <!-- 🔁 REEMPLAZAR ESTOS LINKS POR TUS CHECKOUTS REALES -->
-          <a href="LINK_STRIPE" class="btn btn-gold btn-block" style="margin-bottom:0.5rem;">
-            Pagar con Stripe (USD)
-          </a>
-          <a href="LINK_MERCADOPAGO" class="btn btn-outline btn-block" style="margin-bottom:0.5rem;">
-            Pagar con MercadoPago (ARS)
-          </a>
-          <a href="LINK_HOTMART" class="btn btn-outline btn-block">
-            Pagar desde Hotmart
-          </a>
-
-          <p class="note-sm">
-            Después del pago vas a recibir automáticamente un correo con el acceso al VSL y al material descargable.
-            Si algo falla, podés escribirme a WhatsApp y lo solucionamos.
-          </p>
-        </div>
+        <article class="quote">
+          “Lo que más valoro es la claridad. No te habla desde un pedestal, te muestra el mapa completo y te dice ‘hacé esto primero, esto después’.”
+          <div class="quote-name">Valentina – Coaching</div>
+          <div class="quote-tag">De caos mental a plan concreto</div>
+        </article>
       </div>
     </section>
 
     <!-- FAQ -->
-    <section id="faq">
-      <div class="container">
-        <span class="badge">Preguntas frecuentes</span>
-        <h2>Preguntas frecuentes</h2>
+    <section id="faq" class="section">
+      <div class="section-header">
+        <p class="eyebrow">Dudas frecuentes</p>
+        <h2 class="section-title">Preguntas que tal vez te estás haciendo</h2>
+      </div>
 
+      <div class="faq-grid">
         <details>
-          <summary>¿Cuánto dura el VSL?</summary>
+          <summary>¿Qué recibo exactamente al comprar?</summary>
           <p>
-            La duración exacta puede variar según la edición, pero está pensado para que lo veas de una sola vez,
-            concentrado, sin relleno. Lo importante no es la duración, sino las decisiones que tomes después de verlo.
+            Recibís el PDF del Método Persaltum (edición 2025) + el enlace a la VCL/VSL donde desarrollo el contenido en formato clase.
+            Todo se entrega de forma digital, acceso inmediato después del pago.
           </p>
         </details>
 
         <details>
-          <summary>¿Necesito tener ya un infoproducto creado?</summary>
+          <summary>¿Cuánto tiempo necesito para aplicarlo?</summary>
           <p>
-            No. De hecho, es ideal que veas el VSL y leas la guía antes de lanzar nada,
-            para que armes tu oferta y tu sistema con lógica desde el principio.
+            Podés leer la guía completa en 1–2 días, pero la idea es que la trabajes durante 30–60 días.
+            Por eso está estructurada en acciones semanales para que avances aunque tengas poco tiempo por día.
           </p>
         </details>
 
         <details>
-          <summary>¿Y si ya tengo un infoproducto?</summary>
+          <summary>¿Qué nivel técnico necesito?</summary>
           <p>
-            Te va a ayudar a ordenar tu mensaje, tu proceso de venta y tu ecosistema digital. Muchos alumnos descubren
-            que el problema no era el producto, sino la ausencia de un sistema.
+            No necesitás ser programador ni experto en herramientas. La guía está escrita para gente normal:
+            te indica qué herramientas usar y cómo encararlas de forma simple. Lo técnico profundo entra recién si decidís escalar.
           </p>
         </details>
 
         <details>
-          <summary>¿Esto reemplaza una mentoría 1 a 1?</summary>
+          <summary>¿Puedo acceder desde cualquier país?</summary>
           <p>
-            No. El VSL + Método Persaltum es la base conceptual y estratégica sobre la que después podés construir una mentoría,
-            un programa grupal o cualquier otra oferta. Pero sí te evita años de prueba y error.
+            Sí. El contenido es 100% online. Podés comprar desde cualquier país mientras tengas acceso a Stripe/Hotmart y conexión a internet.
           </p>
         </details>
 
         <details>
-          <summary>¿Qué pasa si tengo dudas técnicas al aplicar?</summary>
+          <summary>¿Es solo teoría o hay cosas concretas?</summary>
           <p>
-            El método te da claridad sobre el “qué” y el “por qué”. Para dudas muy específicas de herramientas,
-            podés escribirme por WhatsApp y, en la medida de lo posible, voy a orientarte o sugerirte el siguiente paso.
+            Todo está bajado a práctica: listas, ejemplos, rutas, preguntas disparadoras y mini-ejercicios.
+            La meta es que termines la guía sabiendo qué vender, a quién, cómo presentarlo y cómo empezar a mover el sistema.
+          </p>
+        </details>
+
+        <details>
+          <summary>Tengo otra duda, ¿puedo hablar con alguien?</summary>
+          <p>
+            Sí. Podés escribirme directamente por WhatsApp y te respondo o mi equipo te orienta para ver si este material es lo que necesitás ahora.
           </p>
         </details>
       </div>
     </section>
 
     <!-- CTA FINAL -->
-    <section>
-      <div class="container cta-final">
-        <span class="badge">Último paso</span>
-        <h2>Si llegaste hasta acá, este mensaje era para vos.</h2>
-        <p>
-          Podés seguir sintiendo que “tenés potencial” pero no saber cómo ordenarlo,
-          o podés elegir hoy entender el sistema y empezar a construir algo que te trascienda.
-        </p>
-        <p style="margin-top:0.4rem;">
-          El VSL de Persaltum y su método no son un video más: son la base para que tomes decisiones distintas
-          sobre tu tiempo, tu energía y tu negocio digital.
-        </p>
-
-        <div class="cta-buttons">
-          <a href="LINK_STRIPE" class="btn btn-gold">Quiero acceder al método ahora</a>
-          <a href="https://wa.me/5491139322197" target="_blank" class="btn btn-outline">
-            Hablar por WhatsApp antes
-          </a>
-        </div>
-
-        <p class="note-sm" style="margin-top:0.9rem;">
-          Si te dijera que no podés fracasar, ¿cuán grande sería tu sueño?  
-          Démosle estructura.
-        </p>
+    <section class="cta-final">
+      <h2>Si te dijera que no podés fracasar, ¿cuán grande sería tu sueño?</h2>
+      <p>
+        El Método Persaltum no es una promesa mágica. Es un mapa claro, probado en la práctica,
+        para que conviertas tu conocimiento en una empresa digital real.  
+        El siguiente paso es tuyo.
+      </p>
+      <div class="cta-final-buttons">
+        <a href="STRIPE_LINK_PDF" class="btn btn-primary" target="_blank" rel="noopener">
+          Comprar ahora (Stripe)
+        </a>
+        <a href="HOTMART_LINK_PDF" class="btn btn-outline" target="_blank" rel="noopener">
+          Comprar en Hotmart
+        </a>
+      </div>
+      <div class="small-note">
+        ¿Tenés dudas antes de decidir?  
+        <a href="WHATSAPP_LINK" target="_blank" rel="noopener" style="color:#f5c451;font-weight:600;">
+          Escribime por WhatsApp y lo vemos.
+        </a>
       </div>
     </section>
   </main>
 
   <footer>
-    <p>© Persaltum – Universidad Digital del Infoproducto. Todos los derechos reservados.</p>
+    © 2025 Persaltum · Universidad Digital del Infoproducto · Pablo Galli  
+    Diseñado para leerse claro en cualquier dispositivo.
   </footer>
+
+  <!-- CTA STICKY MOBILE -->
+  <div class="mobile-cta">
+    <a href="STRIPE_LINK_PDF" class="btn btn-primary" target="_blank" rel="noopener">
+      Comprar PDF + VSL
+    </a>
+    <a href="WHATSAPP_LINK" class="btn btn-outline" target="_blank" rel="noopener">
+      WhatsApp
+    </a>
+  </div>
 
 </body>
 </html>
